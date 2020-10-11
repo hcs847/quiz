@@ -1,0 +1,41 @@
+body {
+    background-color: #B8BFB0;
+}
+
+#quiz-btn {
+    display: inline-block;
+    border: 0;
+    line-height: 2;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: #004E64;
+}
+
+.card-header,
+.card-quiz {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #CAB69D;
+    margin: 20 px;
+    padding: 2rem;
+}
+
+header h1 {
+    text-align: center;
+    color: #004E64;
+}
+
+
+.btn {
+    box-shadow: 0 0px var(--grey);
+    top: 0;
+}
+
+.question-text {
+    display: stretch;
+}
