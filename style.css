@@ -2,7 +2,9 @@ body {
     background-color: #F0F5F4;
 }
 
-#quiz-btn {
+#quiz-btn,
+#initials-btn,
+#clear-btn {
     display: inline-block;
     border: 0;
     line-height: 2;
@@ -66,11 +68,16 @@ header h1 {
 }
 
 .answer-n {
-    /*background-color: #F0F5F4;*/
     margin: 5px 1px;
 }
 
 .answer-btn {
     border: none;
-    /*background-color: #F0F5F4;*/
+}
+
+.input-field,
+h4,
+h5 {
+    text-align: start;
+    width: 100%;
 }
