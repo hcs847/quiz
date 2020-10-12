@@ -1,5 +1,5 @@
 body {
-    background-color: #B8BFB0;
+    background-color: #F0F5F4;
 }
 
 #quiz-btn {
@@ -15,15 +15,35 @@ body {
     background-color: #004E64;
 }
 
-.card-header,
-.card-quiz {
+.card-header {
+
+    color: #004E64;
+    margin: 10px auto;
+
+    padding: 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #CAB69D;
-    margin: 20 px;
-    padding: 2rem;
 }
+
+.card-quiz,
+header p,
+.card {
+    border: 5px solid #F0F5F4;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #004E64;
+    background-color: #fff;
+    margin: 10px auto;
+    padding: 5px;
+    width: 50%;
+}
+
+header p {
+    background-color: #F0F5F4;
+}
+
 
 header h1 {
     text-align: center;
@@ -38,4 +58,19 @@ header h1 {
 
 .question-text {
     display: stretch;
+}
+
+#score {
+    text-align: end;
+    color: #004E64;
+}
+
+.answer-n {
+    /*background-color: #F0F5F4;*/
+    margin: 5px 1px;
+}
+
+.answer-btn {
+    border: none;
+    /*background-color: #F0F5F4;*/
 }

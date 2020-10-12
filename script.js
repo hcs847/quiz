@@ -1,8 +1,12 @@
 // setup variables
 var quizButtonEl = document.querySelector("#quiz-btn");
+var quizHeader = document.querySelector("#quiz-hdr");
 var questionsEl = document.querySelector("#questions-section");
 var answersElm = document.querySelector("#answer-choice");
-var counter = 60;
+var counterEl = document.querySelector("#score");
+var timeLeft = 75;
+var scoreCountdown;
+
 
 // create an array of objects for questions and answers
 var questionsOb = [{
@@ -46,12 +50,19 @@ var questionsOb = [{
     },
 ];
 
+var startQuizHandler = function (event) {
+    //  var testStart = event.target;
+    quizHeader.remove();
+
+    // start the timer which will be the score once stopped
+    scoreCountdown = setInterval(timer, 1000);
+    // console.log("This is countdown " + countdown);
+    getQuestions(questionsOb, 0);
+};
+
 // function to extract the questions from the array
 var getQuestions = function (object, i) {
-    //debugger;
-    if (i === 0) {
-        timeLeft();
-    }
+
     // creating p tags for the question
     var questionTextEl = document.createElement("p");
     questionTextEl.className = "question-text";
@@ -75,8 +86,8 @@ var listingQuestions = function (i) {
     for (let j = 0; j < 3; j++) {
         // creating radio buttons
         var answersEl = document.createElement("div");
-        answersEl.className = "answer-n";
-        answersEl.innerHTML = "<input type='radio' name='answer' check-answer-id=" + questionsOb[i].answers[j].correct + " /><label for='answer-choice'>" + questionsOb[i].answers[j].text + "</label>";
+        answersEl.className = "answer-btn";
+        answersEl.innerHTML = "<input type='button' name='answer' class='answer-btn' check-answer-id=" + questionsOb[i].answers[j].correct + " /><label for='answer-choice'>" + questionsOb[i].answers[j].text + "</label>";
         answerChoiceEl.appendChild(answersEl);
 
         if (j === 2) {
@@ -86,48 +97,63 @@ var listingQuestions = function (i) {
     }
 };
 
-var startQuizHandler = function (event) {
-    var testStart = event.target;
-    //console.log(testStart);
-    getQuestions(questionsOb, 0);
-};
-
-
-
 
 var submitAnswerHandler = function (event) {
+
     var targetEl = event.target;
     var upperDiv = targetEl.closest(".answers-choice");
+    var questionDiv = targetEl.closest(".question-text");
     var iValue = upperDiv.getAttribute("answer-question-id");
     var answer = targetEl.getAttribute("check-answer-id");
     var divParEl = document.querySelector(
         "[answer-question-id='" + iValue + "']");
+
     if (answer === "true") {
         var resultEl = document.createElement("p");
         resultEl.textContent = "correct";
         divParEl.appendChild(resultEl);
 
 
+
     } else if (answer === "false") {
         var resultEl = document.createElement("p");
         resultEl.textContent = "incorrect";
         divParEl.appendChild(resultEl);
+
     }
-    iValue++;
-    getQuestions(questionsOb, iValue);
+    if (iValue < 2) {
+        setTimeout(function () {
+            questionDiv.remove();
+            iValue++;
+            getQuestions(questionsOb, iValue);
+        }, 800);
+    } else if (iValue === "2") {
+        questionDiv.remove();
+        clearInterval(scoreCountdown);
+        saveScore();
+
+    }
 };
 
-var timeLeft = function () {
 
-    for (counter = 60; counter <= 0; counter--) {
+// var countdown = setInterval(timer, 1000);
 
-        if (counter === 0) {
-            console.log(counter);
-            console.log("time's up");
-            clearInterval(starttimeLeft);
-        }
-    };
+var timer = function () {
+    if (timeLeft >= 0) {
+        counterEl.textContent = "Time: " + timeLeft;
+        timeLeft--;
+    }
 };
+
+var saveScore = function () {
+    localStorage.setItem("highscore", (timeLeft + 1));
+};
+
+var getUserInitials = function () {
+
+}
+
+
 
 // event handlers
 quizButtonEl.addEventListener("click", startQuizHandler);
