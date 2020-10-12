@@ -3,7 +3,7 @@ var quizButtonEl = document.querySelector("#quiz-btn");
 var quizHeader = document.querySelector("#quiz-hdr");
 var answersElm = document.querySelector("#answer-choice");
 var counterEl = document.querySelector("#score");
-var timeLeft = 105;
+var timeLeft = 75;
 var scoreCountdown;
 var questionsEl = document.createElement("div");
 var submitButtonEl = document.querySelector("#initials-btn");
@@ -93,10 +93,10 @@ var questionsOb = [{
             text: 'for (var i = 0 ; i < n ; i++ ) { };',
             correct: true
         }, {
-            Text: '(var i = 0 , i < n , i++ );',
+            Text: '"(var i = 0 , i < n , i++ );"',
             correct: false
         }, {
-            Text: '(var i = 0 &&i < n && i++ )',
+            Text: '"(var i = 0 &&i < n && i++ )"',
             correct: false
         }]
     },
@@ -140,8 +140,6 @@ var questionsOb = [{
             correct: false
         }]
     },
-
-
 ];
 
 var createQuizContainer = function () {
@@ -209,13 +207,6 @@ var submitAnswerHandler = function (event) {
     var divParEl = document.querySelector(
         "[answer-question-id='" + iValue + "']");
 
-    if (timeLeft === 0) {
-        questionDiv.remove();
-        clearInterval(scoreCountdown);
-        counterEl.remove();
-        questionsEl.innerHTML = "<p> Time is Up, please try again </p>";
-    }
-
     if (answer === "true") {
         var resultEl = document.createElement("p");
         resultEl.textContent = "Correct";
@@ -245,9 +236,16 @@ var submitAnswerHandler = function (event) {
 
 // var countdown = setInterval(timer, 1000);
 var timer = function () {
-    if (timeLeft >= 0) {
+    if (timeLeft > 0) {
         counterEl.textContent = "Time: " + timeLeft;
         timeLeft--;
+    } else if (timeLeft === 0 || timeLeft < 0) {
+        questionsEl.innerHTML = "<h4>Your score has reached Zero , Please Try again</h4>";
+        setTimeout(function () {
+            location.reload();
+        }, 1500);
+
+
     }
 };
 

@@ -8,3 +8,7 @@ The score is timebased, the quicker it takes to solve, the higher the score whil
 The highest scores are saved to local storage.
 
 ### URL: https://github.com/hcs847/quiz
+
+![](2020-10-11-23-26-13.png)
+![](2020-10-11-23-29-30.png)
+![](2020-10-11-23-28-25.png)
