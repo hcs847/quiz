@@ -272,21 +272,17 @@ var submitScoreHandler = function (event) {
     var savedInitials = localStorage.getItem("highscore");
     var savedScore = localStorage.getItem("initials");
 
-    if (!savedScore || !savedInitials) {
-        var savedInitials = '';
-        var savedScore = '';
-    }
-
     if (savedScore > score) {
-        return false;
+        savedHighScore = savedScore + ' : ' + savedInitials;
+
     } else {
         localStorage.setItem("highscore", score);
         var initials = document.querySelector("#initials").value;
         localStorage.setItem("initials", initials);
     };
 
+    var savedHighScore = savedScore + ' : ' + savedInitials;
 
-    savedHighScore = savedScore + ' : ' + savedInitials;
 
 
     // render high scores
