@@ -1,83 +1,89 @@
 body {
-    background-color: #F0F5F4;
+  background-image: url("./quiz-bg.png");
+  background-size: cover;
 }
+
+.container-main {
+  display: flex;
+  justify-content: center;
+}
+
 
 #quiz-btn,
 #initials-btn,
 #clear-btn {
-    display: inline-block;
-    border: 0;
-    line-height: 2;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    color: #fff;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: #004E64;
+  display: inline-block;
+  border: 0;
+  line-height: 2;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgb(32, 96, 130);
 }
 
-.card-header {
-
-    color: #004E64;
-    margin: 10px auto;
-
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+h1 {
+  font-size: 4rem;
+  line-height: 1;
+  margin: 2rem 0 1rem 0;
 }
 
 .card-quiz,
-header p,
 .card {
-    border: 5px solid #F0F5F4;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: #004E64;
-    background-color: #fff;
-    margin: 10px auto;
-    padding: 5px;
-    width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(32, 96, 130);
+  background-color: white;
+  width: 50%;
+  border: solid 0.3rem rgb(32, 96, 130);
+  padding: 0 1rem 2rem 1rem;
+  margin: 20vw;
 }
 
-header p {
-    background-color: #F0F5F4;
+.card-header {
+  padding: 0rem;
 }
 
-
-header h1 {
-    text-align: center;
-    color: #004E64;
+.card-body {
+  padding: 0 1rem 3rem 1rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
-
 
 .btn {
-    box-shadow: 0 0px var(--grey);
-    top: 0;
+  box-shadow: 0 0px var(--grey);
+  top: 0;
 }
 
 .question-text {
-    display: stretch;
+  display: stretch;
 }
 
 #score {
-    text-align: end;
-    color: #004E64;
+  text-align: end;
+  color: rgb(32, 96, 130);
+  margin: 1rem 2rem;
 }
 
 .answer-n {
-    margin: 5px 1px;
+  margin: 5px 1px;
 }
 
 .answer-btn {
-    border: none;
+  border: none;
 }
 
 .input-field,
 h4,
 h5 {
-    text-align: start;
-    width: 100%;
+  text-align: start;
+  width: 100%;
+}
+
+.label-answer {
+  padding-left: 0.4rem;
+  margin-bottom: 1rem;
 }

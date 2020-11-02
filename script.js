@@ -1,6 +1,6 @@
 // setup variables
 var quizButtonEl = document.querySelector("#quiz-btn");
-var quizHeader = document.querySelector("#quiz-hdr");
+var quizHeader = document.querySelector("#quiz-main");
 var answersElm = document.querySelector("#answer-choice");
 var counterEl = document.querySelector("#score");
 var timeLeft = 75;
@@ -54,7 +54,7 @@ var questionsOb = [{
             text: 'console.log("Hello World")',
             correct: true
         }, {
-            Text: 'console.log.Hello World',
+            text: 'console.log.Hello World',
             correct: false
         }, {
             text: 'alert.Hello.World',
@@ -93,10 +93,10 @@ var questionsOb = [{
             text: 'for (var i = 0 ; i < n ; i++ ) { };',
             correct: true
         }, {
-            Text: '"(var i = 0 , i < n , i++ );"',
+            text: 'for (var i = 0 , i < n , i++ );',
             correct: false
         }, {
-            Text: '"(var i = 0 &&i < n && i++ )"',
+            text: 'for (var i = 0 &&i < n && i++ );',
             correct: false
         }]
     },
@@ -166,9 +166,9 @@ var getQuestions = function (object, i) {
 
     // creating p tags for the question
     var questionTextEl = document.createElement("p");
-    questionTextEl.className = "question-text";
+    questionTextEl.className = "question-text text-flow";
     // extracting the text for the question 
-    questionTextEl.innerHTML = "<h2>" + object[i].question + "</h2>";
+    questionTextEl.innerHTML = "<h5>" + object[i].question + "</h5>";
     // storing the index of the question as an attribute
     questionTextEl.setAttribute("data-question-id", i);
     // pushing the element into the document
@@ -188,7 +188,7 @@ var listingQuestions = function (i) {
         // creating radio buttons
         var answersEl = document.createElement("div");
         answersEl.className = "answer-btn";
-        answersEl.innerHTML = "<input type='button' name='answer' class='answer-btn' check-answer-id=" + questionsOb[i].answers[j].correct + " /><label for='answer-choice'>" + questionsOb[i].answers[j].text + "</label>";
+        answersEl.innerHTML = "<input type='button' name='answer' class='answer-btn' check-answer-id=" + questionsOb[i].answers[j].correct + " /><label class='label-answer' for='answer-choice'>" + questionsOb[i].answers[j].text + "</label>";
         answerChoiceEl.appendChild(answersEl);
 
         if (j === 2) {
@@ -208,13 +208,15 @@ var submitAnswerHandler = function (event) {
         "[answer-question-id='" + iValue + "']");
 
     if (answer === "true") {
-        var resultEl = document.createElement("p");
-        resultEl.textContent = "Correct";
+        var resultEl = document.createElement("i");
+        resultEl.className = "material-icons"
+        resultEl.textContent = "done";
         divParEl.appendChild(resultEl);
 
     } else if (answer === "false") {
-        var resultEl = document.createElement("p");
-        resultEl.textContent = "Incorrect";
+        var resultEl = document.createElement("i");
+        resultEl.className = "material-icons"
+        resultEl.textContent = "clear";
         divParEl.appendChild(resultEl);
         timeLeft -= 10;
 
@@ -224,11 +226,12 @@ var submitAnswerHandler = function (event) {
             questionDiv.remove();
             iValue++;
             getQuestions(questionsOb, iValue);
-        }, 700);
+        }, 900);
 
     } else if (iValue === "9") {
         questionDiv.remove();
         clearInterval(scoreCountdown);
+        //clear the countdown
         counterEl.remove();
         getInitials();
     }
@@ -240,12 +243,11 @@ var timer = function () {
         counterEl.textContent = "Time: " + timeLeft;
         timeLeft--;
     } else if (timeLeft === 0 || timeLeft < 0) {
+        // overwriting previous content with the following message 
         questionsEl.innerHTML = "<h4>Your score has reached Zero , Please Try again</h4>";
         setTimeout(function () {
             location.reload();
         }, 1500);
-
-
     }
 };
 
@@ -283,8 +285,6 @@ var submitScoreHandler = function (event) {
 
     var savedHighScore = savedScore + ' : ' + savedInitials;
 
-
-
     // render high scores
     renderHighScore(savedHighScore);
 };
@@ -292,7 +292,7 @@ var submitScoreHandler = function (event) {
 var renderHighScore = function (savedHighScore) {
 
     userInputEl = document.querySelector("#questions-section");
-    userInputEl.innerHTML = "<h2>High Scores<br /></h2><p>" + savedHighScore + "<br /></p><button id='clear-btn' type='button'>Go Back</button>";
+    userInputEl.innerHTML = "<h4>High Scores<br /></h4><p>" + savedHighScore + "<br /></p><button id='clear-btn' type='button'>Go Back</button>";
     var goBackButtonEl = document.querySelector("#clear-btn");
 
     goBackButtonEl.addEventListener("click", clearButtonHandler);
