@@ -7,7 +7,7 @@ This application lists JavaScript questions with 3 possible answers to select fr
 The score is timebased, the quicker it takes to solve, the higher the score while incorrect answers will deduct 10 points from the score.
 The highest scores are saved to local storage.
 
-### [Go to JavaScript quiz](https://github.com/hcs847/quiz)
+### [Go to JavaScript quiz](https://hcs847.github.io/quiz/)
 
 ![](js-quiz.png)
 
