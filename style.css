@@ -1,11 +1,23 @@
+:root {
+--mid-blue: rgb(26,80,129);
+--dark-blue: rgb(39,46,74);
+--light-blue: rgb(142,209,242);
+}
+
 body {
-  background-image: url("./quiz-bg.png");
+  background-image: url("./quiz_updated.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container-top {
+  margin-bottom: auto;
 }
 
 .container-main {
   display: flex;
   justify-content: center;
+  min-height: 80vh;
 }
 
 
@@ -18,14 +30,14 @@ body {
   padding: 0 20px;
   font-size: 1rem;
   text-align: center;
-  color: #fff;
+  color: var(--light-blue);
   text-shadow: 1px 1px 1px #000;
   border-radius: 10px;
-  background-color: rgb(32, 96, 130);
+  background-color: var(--dark-blue);
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   line-height: 1;
   margin: 2rem 0 1rem 0;
 }
@@ -35,12 +47,15 @@ h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: rgb(32, 96, 130);
+  color: var(--mid-blue);
   background-color: white;
-  width: 50%;
-  border: solid 0.3rem rgb(32, 96, 130);
-  padding: 0 1rem 2rem 1rem;
-  margin: 20vw;
+  max-width: 33vw;
+  border: solid 0.3rem var(--mid-blue);
+  padding: 1em 2em;
+  margin-right: auto;
+  margin-left: 3vw;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .card-header {
@@ -64,7 +79,7 @@ h1 {
 
 #score {
   text-align: end;
-  color: rgb(32, 96, 130);
+  color: white;
   margin: 1rem 2rem;
 }
 
